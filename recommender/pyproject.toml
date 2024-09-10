@@ -6,8 +6,10 @@ authors = ["LongBaoCoder2 <longbao.it@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.9"
-
+python = "^3.10"
+pydantic = "^2.9.1"
+numpy = "^2.1.1"
+scipy = "^1.14.1"
 
 [build-system]
 requires = ["poetry-core"]
