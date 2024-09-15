@@ -2,10 +2,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from .config import MultiModalSSLConfig
+from .model import BaseTrainingModel
 
-
-
-class MultiModalSSL(nn.Module):
+class MultiModalSSL(BaseTrainingModel):
     def __init__(self, config: MultiModalSSLConfig):
         super().__init__()
         
