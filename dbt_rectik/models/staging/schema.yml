@@ -1,0 +1,192 @@
+version: 2
+
+models:
+  - name: user_interaction_staging
+    description: "Staging model for user interaction data"
+    columns:
+      - name: user_id
+        description: "Unique identifier for each user"
+        data_tests:
+          - not_null
+      - name: video_id
+        description: "Unique identifier for each video"
+        data_tests:
+          - not_null
+      - name: play_duration
+        description: "Duration the user interacted with the video"
+      - name: interaction_date
+        description: "Timestamp of the user interaction"
+        data_tests:
+          - not_null
+          - date_format
+
+  - name: user_onehot_features_staging
+    description: "Staging model for user one-hot encoded features"
+
+  - name: user_staging
+    description: "Staging model for user-related metadata"
+    columns:
+      - name: user_id
+        description: "Unique identifier for each user"
+        data_tests:
+          - not_null
+      - name: is_lowactive_period
+        description: "Indicator if the user is in a low activity period"
+      - name: is_live_streamer
+        description: "Indicator if the user is a live streamer"
+      - name: is_video_author
+        description: "Indicator if the user is a video author"
+      - name: follow_user_num_range
+        description: "Range of users followed by this user"
+      - name: fans_user_num_range
+        description: "Range of fans that follow this user"
+      - name: friend_user_num_range
+        description: "Range of user's friends"
+      - name: register_days_range
+        description: "Range of days since the user registered"
+
+  - name: video_caption_staging
+    description: "Staging model for video captions and tags"
+    columns:
+      - name: video_id
+        description: "Unique identifier for each video"
+        data_tests:
+          - not_null
+      - name: manual_cover_text
+        description: "Manually added cover text for the video"
+      - name: caption
+        description: "Video caption"
+      - name: topic_tag
+        description: "Tags associated with the video's topic"
+
+  - name: video_interaction_staging
+    description: "Staging model for video interaction metrics"
+    columns:
+      - name: video_id
+        description: "Unique identifier for each video"
+        data_tests:
+          - not_null
+      - name: interaction_date
+        description: "Timestamp of the video interaction"
+        data_tests:
+          - not_null
+          - date_format
+      - name: like_cnt
+        description: "Total number of likes on the video"
+      - name: click_like_cnt
+        description: "Number of times the like button was clicked"
+      - name: double_click_cnt
+        description: "Number of double-clicks on the video"
+      - name: cancel_like_cnt
+        description: "Number of times the like was canceled"
+      - name: comment_cnt
+        description: "Total number of comments on the video"
+      - name: direct_comment_cnt
+        description: "Number of direct comments"
+      - name: reply_comment_cnt
+        description: "Number of reply comments"
+      - name: delete_comment_cnt
+        description: "Number of comments deleted"
+      - name: comment_like_cnt
+        description: "Number of comment likes"
+      - name: follow_cnt
+        description: "Number of follows"
+      - name: cancel_follow_cnt
+        description: "Number of follow cancellations"
+      - name: share_cnt
+        description: "Number of shares"
+      - name: download_cnt
+        description: "Number of downloads"
+      - name: report_cnt
+        description: "Number of reports on the video"
+      - name: reduce_similar_cnt
+        description: "Number of times users reduced similar content"
+      - name: collect_cnt
+        description: "Number of times the video was collected"
+      - name: cancel_collect_cnt
+        description: "Number of times collection was canceled"
+
+  - name: video_staging
+    description: "Staging model for video metadata"
+    columns:
+      - name: video_id
+        description: "Unique identifier for each video"
+        data_tests:
+          - not_null
+      - name: user_id
+        description: "Unique identifier for the video author"
+      - name: upload_dt
+        description: "Upload date of the video"
+        data_tests:
+          - date_format
+      - name: visible_status
+        description: "Visibility status of the video ['public', 'private', 'only friends']"
+      - name: video_duration
+        description: "Duration of the video in seconds"
+      - name: video_width
+        description: "Width of the video in pixels"
+      - name: video_height
+        description: "Height of the video in pixels"
+
+  - name: video_statistic_staging
+    description: "Staging model for video statistics"
+    columns:
+      - name: video_id
+        description: "Unique identifier for each video"
+        data_tests:
+          - not_null
+      - name: statistic_date
+        description: "Date of the statistics"
+        data_tests:
+          - not_null
+          - date_format
+      - name: show_cnt
+        description: "Number of times the video was shown"
+      - name: show_user_num
+        description: "Number of unique users who saw the video"
+      - name: play_cnt
+        description: "Number of times the video was played"
+      - name: play_user_num
+        description: "Number of unique users who played the video"
+      - name: play_duration
+        description: "Total play duration of the video"
+      - name: complete_play_cnt
+        description: "Number of times the video was completely played"
+      - name: complete_play_user_num
+        description: "Number of unique users who completely played the video"
+      - name: valid_play_cnt
+        description: "Number of valid plays (e.g., long enough to count)"
+      - name: valid_play_user_num
+        description: "Number of unique users with valid plays"
+      - name: long_time_play_cnt
+        description: "Number of long-duration plays"
+      - name: long_time_play_user_num
+        description: "Number of unique users who played the video for a long time"
+      - name: short_time_play_cnt
+        description: "Number of short-duration plays"
+      - name: short_time_play_user_num
+        description: "Number of unique users who played the video for a short time"
+      - name: play_progress
+        description: "Average progress of the video plays"
+      - name: comment_stay_duration
+        description: "Average duration of comment interactions"
+
+sources:
+  - name: postgres_database
+    database: postgres_db
+    schema: public
+    tables:
+      # User features 
+      - name: user
+      - name: user_onehot_features
+
+      # Video features
+      - name: video
+      - name: video_interaction
+      - name: video_caption
+      - name: video_statistic
+
+      # User - Item interaction
+      - name: user_interaction
+
+
