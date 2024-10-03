@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: sau28
+      POSTGRES_DB: recommender
+    ports:
+      - 5433:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - recommender
+
+  ingestion:
+    build:
+      context: ./ingestion
+      dockerfile: Dockerfile
+    container_name: data_ingestion
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=sau28
+      - POSTGRES_HOST=localhost
+      - POSTGRES_DB=recommender
+      - DB_URL=postgresql://postgres:sau28@postgres/recommender
+      - DATA_DIR=/app/data/KuaiRec 2.0/data
+      - METAFLOW_USER=user
+    depends_on:
+      - postgres
+    volumes:
+      - ./data:/app/data
+    networks:
+      - recommender
+  
+  recommender_service:
+    build:
+      context: ./rectik
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8888" # Jupyter Lab
+      - "8797:8787" # Dask Scheduler
+      - "8796:8786" # Dask Workers
+      - "3030:8080" # HTTPService
+      - "3031:8081" # GRPCInferenceService
+      - "3032:8082" # Metrics Service
+    ipc: host
+    cap_add:
+      - SYS_NICE
+    volumes:
+      - ./data:/rectik/data 
+      - ./rectik:/rectik
+    command: bash -c "jupyter-lab --allow-root --ip='0.0.0.0' --NotebookApp.token=''"
+
+volumes:
+  postgres_data:
+
+networks:
+  recommender:
