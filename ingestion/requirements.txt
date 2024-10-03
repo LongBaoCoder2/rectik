@@ -1,0 +1,6 @@
+metaflow
+sqlalchemy
+psycopg2-binary
+pandas
+requests
+# pylint==3.3.1
