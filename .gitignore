@@ -169,3 +169,4 @@ recommender/
 rectik/.metaflow/
 rectik/categories/
 rectik/artifacts/video_embeddings.parquet
+/rectik/faiss_index
