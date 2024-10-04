@@ -1,0 +1,9 @@
+metaflow
+psycopg2-binary
+requests
+feast
+faiss-cpu
+pyarrow
+fastparquet
+seedir
+duckdb

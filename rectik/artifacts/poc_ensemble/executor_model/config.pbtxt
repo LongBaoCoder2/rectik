@@ -1,0 +1,22 @@
+name: "executor_model"
+platform: "merlin_executor"
+input {
+  name: "user_id"
+  data_type: TYPE_INT32
+  dims: -1
+}
+output {
+  name: "ordered_ids"
+  data_type: TYPE_INT32
+  dims: -1
+  dims: 1
+}
+output {
+  name: "ordered_scores"
+  data_type: TYPE_FP32
+  dims: -1
+  dims: 1
+}
+instance_group {
+}
+backend: "python"
