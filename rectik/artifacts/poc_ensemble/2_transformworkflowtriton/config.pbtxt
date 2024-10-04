@@ -1,0 +1,350 @@
+name: "2_transformworkflowtriton"
+input {
+  name: "video_id"
+  data_type: TYPE_INT64
+  dims: -1
+}
+input {
+  name: "video_duration"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "total_play_duration"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "like_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "click_like_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "double_click_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "cancel_like_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "comment_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "direct_comment_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "reply_comment_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "delete_comment_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "comment_like_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "follow_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "cancel_follow_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "share_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "download_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "report_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "reduce_similar_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "collect_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "cancel_collect_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "show_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "show_user_num"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "play_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "play_user_num"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "complete_play_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "complete_play_user_num"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "valid_play_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "valid_play_user_num"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "long_time_play_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "long_time_play_user_num"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "short_time_play_cnt"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "short_time_play_user_num"
+  data_type: TYPE_FP64
+  dims: -1
+}
+input {
+  name: "comment_stay_duration"
+  data_type: TYPE_FP64
+  dims: -1
+}
+output {
+  name: "video_id"
+  data_type: TYPE_INT32
+  dims: -1
+}
+output {
+  name: "video_duration"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "total_play_duration"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "like_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "click_like_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "double_click_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "cancel_like_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "comment_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "direct_comment_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "reply_comment_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "delete_comment_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "comment_like_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "follow_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "cancel_follow_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "share_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "download_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "report_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "reduce_similar_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "collect_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "cancel_collect_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "show_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "show_user_num"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "play_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "play_user_num"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "complete_play_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "complete_play_user_num"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "valid_play_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "valid_play_user_num"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "long_time_play_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "long_time_play_user_num"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "short_time_play_cnt"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "short_time_play_user_num"
+  data_type: TYPE_FP32
+  dims: -1
+}
+output {
+  name: "comment_stay_duration"
+  data_type: TYPE_FP32
+  dims: -1
+}
+instance_group {
+}
+parameters {
+  key: "cats"
+  value {
+  }
+}
+parameters {
+  key: "conts"
+  value {
+  }
+}
+parameters {
+  key: "python_module"
+  value {
+    string_value: "merlin.systems.triton.models.workflow_model"
+  }
+}
+backend: "python"

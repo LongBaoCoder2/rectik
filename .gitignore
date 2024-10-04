@@ -161,4 +161,12 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-example
+example/
+data/
+*-bk/
+.user.yml
+recommender/
+rectik/.metaflow/
+rectik/categories/
+rectik/artifacts/video_embeddings.parquet
+/rectik/faiss_index
