@@ -45,6 +45,12 @@ class TrainingFlow(FlowSpec):
         default="5"
     )
 
+    EMBEDDING_DIM = Parameter(
+        name="embedding_dim",
+        help="dimension of embedding space.",
+        default="64"
+    )
+
     @step
     def start(self):
         """
@@ -84,6 +90,10 @@ class TrainingFlow(FlowSpec):
         self.epochs = int(self.EPOCHS)
         if not (self.epochs >= 0):
             raise ValueError(f"Invalid EPOCHS. It must be not negative. Provided: {self.epochs}")
+
+        self.embedding_dim = int(self.EMBEDDING_DIM)
+        if not (self.embedding_dim >= 0):
+            raise ValueError(f"Invalid EMBEDDING_DIM. It must be not negative. Provided: {self.epochs}")
 
 
         self.train_data_path = os.path.join(self.PROCESSED_DATA_DIR, "train")
@@ -134,7 +144,7 @@ class TrainingFlow(FlowSpec):
         print("Initializing the TwoTower model...")
         self.model_tt = mm.TwoTowerModel(
             schema,
-            query_tower=mm.MLPBlock([128, 64], no_activation_last_layer=True),
+            query_tower=mm.MLPBlock([128, self.embedding_dim], no_activation_last_layer=True),
             samplers=[mm.InBatchSampler()],
             embedding_options=mm.EmbeddingOptions(infer_embedding_sizes=True),
         )
@@ -211,7 +221,7 @@ class TrainingFlow(FlowSpec):
         print("Initializing the DLRM model...")
         model = mm.DLRMModel(
             schema,
-            embedding_dim=64,
+            embedding_dim=self.embedding_dim,
             bottom_block=mm.MLPBlock([128, 64]),
             top_block=mm.MLPBlock([128, 64, 32]),
             prediction_tasks=mm.RegressionTask(target_column),
