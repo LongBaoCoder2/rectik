@@ -165,3 +165,7 @@ example/
 data/
 *-bk/
 .user.yml
+recommender/
+rectik/.metaflow/
+rectik/categories/
+rectik/artifacts/video_embeddings.parquet
