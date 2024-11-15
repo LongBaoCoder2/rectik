@@ -23,18 +23,18 @@ These steps ensure that the data is compatible with NVIDIA Merlin models.
 ### 2. Train Flow
 The Train Flow pipeline defines and trains models for the recommendation system using a multi-stage approach:
 
-__Retrieval (Two-Tower Model)__: This model retrieves a large set of candidate videos, narrowing down potential recommendations to a manageable number.
-__Reranking (DLRM)__: This model ranks the retrieved candidates to find the most relevant videos.
+- __Retrieval (Two-Tower Model)__: This model retrieves a large set of candidate videos, narrowing down potential recommendations to a manageable number.
+- __Reranking (DLRM)__: This model ranks the retrieved candidates to find the most relevant videos.
 Tools Used:
-__NVIDIA Merlin__: For model building and training.
-__FAISS__: For vector similarity search, used to speed up the retrieval of candidates.
-__Feast__: As a feature store for managing and serving user and item features.
+- __NVIDIA Merlin__: For model building and training.
+- __FAISS__: For vector similarity search, used to speed up the retrieval of candidates.
+- __Feast__: As a feature store for managing and serving user and item features.
 
 ### 3. Serve Flow
 The Serve Flow pipeline handles the following tasks:
 
-__Ensemble Creation__: Merging the retrieval and reranking models into a single ensemble.
-__Deployment Setup__: Preparing the model repository with metadata, workflows, and checkpoints for deployment on Triton Server for efficient inference.
+- __Ensemble Creation__: Merging the retrieval and reranking models into a single ensemble.
+- __Deployment Setup__: Preparing the model repository with metadata, workflows, and checkpoints for deployment on Triton Server for efficient inference.
 
 ## Technology Stack
 - Data Processing:
